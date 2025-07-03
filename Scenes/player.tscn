@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0cf27ribiu3s"]
+
+[ext_resource type="Texture2D" uid="uid://7ybeuonauhqn" path="res://Assets/Graphics/Jump/Frame 3.png" id="1_gymyn"]
+[ext_resource type="Script" uid="uid://btwnkqw0t8o7r" path="res://Scripts/player.gd" id="1_pu2lt"]
+[ext_resource type="Texture2D" uid="uid://5ny7dd65uocq" path="res://Assets/Graphics/Jump/Untitled-2.png" id="2_pu2lt"]
+[ext_resource type="Texture2D" uid="uid://vcdptxcun0ae" path="res://Assets/Graphics/Run/Frame 1.png" id="3_ukyrk"]
+[ext_resource type="Texture2D" uid="uid://ccs2ie8wk8lf1" path="res://Assets/Graphics/Run/Frame 2.png" id="4_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://c4tg4s8ogdq8l" path="res://Assets/Graphics/Run/Frame 3.png" id="5_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://c4tvgacfiio8i" path="res://Assets/Graphics/Run/Frame 4.png" id="6_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://c2h6xwlykw3uu" path="res://Assets/Graphics/Run/Frame 5.png" id="7_qqcod"]
+[ext_resource type="Texture2D" uid="uid://pjhasb3bh7o7" path="res://Assets/Graphics/Run/Frame 6.png" id="8_igrcy"]
+[ext_resource type="Texture2D" uid="uid://ch1ql602wpbdk" path="res://Assets/Graphics/Run/Frame 7.png" id="9_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://c1x551rugf82b" path="res://Assets/Graphics/Run/Frame 8.png" id="10_l6n3p"]
+[ext_resource type="AudioStream" uid="uid://bwtja6n5f6lyj" path="res://Assets/Audio/JumpAudio.mp3" id="12_pu2lt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpjfl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gymyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pu2lt")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ukyrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7dp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h4iuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fd4e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qqcod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_igrcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fs7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l6n3p")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi64h"]
+size = Vector2(150.688, 404)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-1, 0)
+scale = Vector2(0.31, 0.31)
+script = ExtResource("1_pu2lt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wpjfl")
+animation = &"Jump"
+autoplay = "Run"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(71.0312, 0)
+shape = SubResource("RectangleShape2D_bi64h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pu2lt")
