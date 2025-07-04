@@ -6,10 +6,10 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4, 4)
+position = Vector2(0, 145)
 texture = ExtResource("1_cjwj4")
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(217, 228)
-polygon = PackedVector2Array(-67, 136, -20, -191, 13, -221, 65, -225, 124, 133)
+position = Vector2(118, 304)
+polygon = PackedVector2Array(-80, -68, -68, -114, -63, -158, -44, -156, -29, -69)
