@@ -12,6 +12,8 @@ const MOON_START := Vector2i(698, 330)
 var difficulty
 const MAX_DIFFICULTY : int = 2
 
+var spawned_enemy = false
+
 var speed : float
 const START_SPEED : float = 10.0
 const MAX_SPEED : int = 25
@@ -69,7 +71,12 @@ func _process(delta):
 		#print(difficulty)
 		
 		if $BG/Moon.position.y > 80:
-			$BG/Moon.position.y -= speed/100
+			$BG/Moon.position.y -= speed/10
+		else:
+			var tween = create_tween()
+			var isrun = false
+			tween.tween_property($BG/Moon, "scale", Vector2.ZERO, 2.0)
+			
 
 		if $Camera2D.position.x - $Land.position.x > screen_size.x * 1.5:
 			$Land.position.x += screen_size.x
@@ -81,6 +88,7 @@ func _process(delta):
 	else:
 		if Input.is_action_pressed("jump"):
 			game_running = true
+
 func generate_stones():
 	if stones.is_empty() or last_st.position.x < score + randi_range(300, 500):
 		var st_type = stone_type[randi() % stone_type.size()]
