@@ -59,10 +59,10 @@ grow_horizontal = 0
 
 [node name="LabelHigh" type="Label" parent="Control2"]
 layout_mode = 0
-offset_left = -77.0
-offset_top = 3.0
-offset_right = 23.0
-offset_bottom = 26.0
+offset_left = -143.0
+offset_top = 5.0
+offset_right = -43.0
+offset_bottom = 28.0
 text = "HIGH SCORE:"
 
 [node name="Control3" type="Control" parent="."]

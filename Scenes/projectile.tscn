@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://n3a4feunjqkp"]
+
+[ext_resource type="Texture2D" uid="uid://ckvs8wdaw2k6x" path="res://Assets/Graphics/Object/Projectile.png" id="1_f8cdk"]
+[ext_resource type="Script" uid="uid://dg4l04w23te27" path="res://Scripts/projectile.gd" id="1_yr2qt"]
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_yr2qt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.395833, 0.347826)
+texture = ExtResource("1_f8cdk")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.395833, 0.347826)
+polygon = PackedVector2Array(22.7368, 0, 17.6842, 8.625, 10.1053, 17.25, 2.52632, 20.125, 2.52632, 20.125, 2.52632, 25.875, 7.57895, 28.75, 10.1053, 31.625, 20.2105, 40.25, 22.7368, 46, 27.7895, 46, 27.7895, 40.25, 30.3158, 37.375, 37.8947, 28.75, 45.4737, 25.875, 45.4737, 20.125, 42.9474, 20.125, 37.8947, 17.25, 30.3158, 8.625, 25.2632, 0)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 const GRAVITY : int = 2800
 const JUMP_SPEED : int = -1200
+var barrier_scene = preload("res://Scenes/barrier.tscn")
+var barrier_instance = null
+var has_barrier: bool = false
+#@onready var barrier = $Barrier
+var q_just_pressed = false
+var q_just_released := true
 
 func _physics_process(delta):
 	velocity.y += GRAVITY*delta
