@@ -7,6 +7,7 @@ var stones : Array
 
 const START_POS := Vector2i(150, 485)
 const CAM_START := Vector2i(576, 324)
+const MOON_START := Vector2i(698, 330)
 
 var difficulty
 const MAX_DIFFICULTY : int = 2
@@ -45,6 +46,7 @@ func new_game():
 	$Player.position = START_POS
 	$Player.velocity = Vector2i(0, 0)
 	$Camera2D.position = CAM_START
+	$BG/Moon.position = MOON_START
 	$Land.position = Vector2i(0, 0)
 	$BG/Control3/Restart.hide()
 
@@ -65,6 +67,10 @@ func _process(delta):
 		#print(score/10)
 		#print(speed)
 		#print(difficulty)
+		
+		if $BG/Moon.position.y > 80:
+			$BG/Moon.position.y -= speed/100
+
 		if $Camera2D.position.x - $Land.position.x > screen_size.x * 1.5:
 			$Land.position.x += screen_size.x
 			
@@ -109,7 +115,7 @@ func show_score():
 func get_high_score():
 	if score > high_score:
 		high_score = score
-		$"BG".get_node("Control2/LabelHigh").text = "SCORE: " + str(high_score / 10)
+		$"BG".get_node("Control2/LabelHigh").text = "HIGH SCORE: " + str(high_score / 10)
 
 func adjust_difficulty():
 	difficulty = score / SPEED_MOD

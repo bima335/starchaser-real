@@ -17,10 +17,15 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_gymyn")
-}, {
-"duration": 1.0,
 "texture": ExtResource("2_pu2lt")
+}],
+"loop": true,
+"name": &"Float",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gymyn")
 }],
 "loop": false,
 "name": &"Jump",
@@ -67,10 +72,8 @@ script = ExtResource("1_pu2lt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wpjfl")
-animation = &"Jump"
+animation = &"Float"
 autoplay = "Run"
-frame = 1
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(71.0312, 0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7231434815qv"]
+[gd_scene load_steps=5 format=3 uid="uid://c7231434815qv"]
 
 [ext_resource type="Script" uid="uid://ca2wphnsxoa03" path="res://Scripts/bg.gd" id="1_ha8nf"]
 [ext_resource type="Texture2D" uid="uid://cdnqh00gjb82" path="res://Assets/Graphics/Background/Sky.png" id="2_ha8nf"]
 [ext_resource type="Texture2D" uid="uid://o60422f8wqxq" path="res://Assets/Graphics/Background/Cliff.png" id="3_3hex7"]
+[ext_resource type="Texture2D" uid="uid://f0td5a0ytq68" path="res://Assets/Graphics/Background/Moon.png" id="4_3hex7"]
 
 [node name="BG" type="ParallaxBackground"]
 script = ExtResource("1_ha8nf")
@@ -26,6 +27,7 @@ motion_scale = Vector2(0.7, 0.7)
 motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+z_index = 1
 texture_filter = 1
 position = Vector2(0, -1.19209e-07)
 scale = Vector2(1.00365, 0.606742)
@@ -33,20 +35,20 @@ texture = ExtResource("3_3hex7")
 centered = false
 
 [node name="Control" type="Control" parent="."]
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="LabelScore" type="Label" parent="Control"]
-z_index = 2
 layout_mode = 1
 offset_right = 47.0
 offset_bottom = 23.0
 text = "SCORE:"
 
 [node name="Control2" type="Control" parent="."]
-z_index = 2
+z_index = 3
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -65,7 +67,7 @@ text = "HIGH SCORE:"
 
 [node name="Control3" type="Control" parent="."]
 process_mode = 2
-z_index = 2
+z_index = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,7 +98,7 @@ text = "Game Over
 Press To Restart"
 
 [node name="Control4" type="Control" parent="."]
-z_index = 2
+z_index = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,3 +126,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press Space or Click To Play"
+
+[node name="Moon" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(698, 333)
+scale = Vector2(0.606897, 0.577586)
+texture = ExtResource("4_3hex7")

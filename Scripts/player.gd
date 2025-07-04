@@ -9,8 +9,9 @@ func _physics_process(delta):
 		if Input.is_action_pressed("jump"):
 			velocity.y = JUMP_SPEED
 			$JumpAudio.play()
+			$AnimatedSprite2D.play("Jump")
 		else:
 			$AnimatedSprite2D.play("Run")
 	else:
-		$AnimatedSprite2D.play("Jump")
+		$AnimatedSprite2D.play("Float")
 	move_and_slide()
