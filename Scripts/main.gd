@@ -1,21 +1,26 @@
 extends Node
 
+#Preload scenes
 var stone1 = preload("res://Scenes/stone_1.tscn")
 var stone2 = preload("res://Scenes/stone_2.tscn")
 var projectile = preload("res://Scenes/projectile.tscn")
-
 var barrier_scene = preload("res://Scenes/barrier.tscn")
-var current_barrier = null
-var player = null
 
-
+#set stones dan array
 var stone_type := [stone1, stone2]
 var stones : Array
+var last_st
+var land_height : int
 
+#var barrier
+var current_barrier = null
 var can_barrier = true
+
+var player = null
 
 var projectile_height := [200, 400 ]
 
+#Start position
 const START_POS := Vector2i(150, 485)
 const CAM_START := Vector2i(576, 324)
 const MOON_START := Vector2i(698, 330)
@@ -37,8 +42,6 @@ var high_score: int
 
 var game_running : bool
 var SPEED_MOD : int= 5000
-var last_st
-var land_height : int
 
 func _ready():
 	screen_size = get_window().size
@@ -51,7 +54,6 @@ func _ready():
 		push_error("Player 404")
 		return
 	new_game()
-	#$Player/Barrier.hide()
 	
 func new_game():
 	game_running = false
@@ -62,9 +64,9 @@ func new_game():
 	$BG/Control4/Start.show()
 	
 #	CLEAN
-	#for st in stones:
-		#st.queue_free()
-	#stones.clear()
+	for st in stones:
+		st.queue_free()
+	stones.clear()
 	
 	$Player.position = START_POS
 	#$Barrier.position = START_POS
@@ -110,10 +112,6 @@ func _process(delta):
 		$Camera2D.position.x += speed
 		score += speed
 		show_score()
-		#print(score/10)
-		#print(speed)
-		#print(difficulty)
-		
 		if $BG/Moon.position.y > 80:
 			$BG/Moon.position.y -= speed/10
 #			Stage change
@@ -130,14 +128,10 @@ func _process(delta):
 			$Land.position.x += screen_size.x
 		
 #		CLEAN
-		#for st in stones:
-			#if st.position.x < ($Camera2D.position.x - screen_size.x):
-				#remove_stones(st)
-		#
-		#if Input.is_action_just_pressed("barrier"):
-			#if can_barrier:
-				#place_barrier()
-				#can_barrier = false
+		for st in stones:
+			if st.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_stones(st)
+		
 		
 	else:
 		if Input.is_action_pressed("jump"):
@@ -177,14 +171,14 @@ func add_projectile(st, x, y):
 	add_child(st)
 	stones.append(st)
 
-func remove_stones(st):
-	st.queue_free()
-	stones.erase(st)
-	
 func hit_stone(body):
 	if body.name == "Player":
 		game_over()  
 
+func remove_stones(st):
+	st.queue_free()
+	stones.erase(st)
+	
 
 func show_score():
 	$"BG".get_node("Control/LabelScore").text = "SCORE: " + str(score/10)
