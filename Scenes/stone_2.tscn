@@ -3,13 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://cdby4vv67yobl" path="res://Assets/Graphics/Object/Stone2.png" id="1_cjwj4"]
 
 [node name="Stone2" type="Area2D"]
+z_index = 3
+position = Vector2(272, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 145)
+position = Vector2(-24, 144)
+scale = Vector2(0.932203, 0.9)
 texture = ExtResource("1_cjwj4")
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(118, 304)
-polygon = PackedVector2Array(-80, -68, -68, -114, -63, -158, -44, -156, -29, -69)
+position = Vector2(92, 296)
+polygon = PackedVector2Array(-80, -68, -72.2031, -97.888, -68, -114, -63, -158, -44, -156, -29, -69)

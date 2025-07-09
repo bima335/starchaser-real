@@ -2,18 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://c7231434815qv" path="res://Scenes/bg.tscn" id="1_8gbba"]
 [ext_resource type="Script" uid="uid://hyrvacbb8i5c" path="res://Scripts/main.gd" id="1_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://b0m5327q8c5nk" path="res://Scenes/land.tscn" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://c0cf27ribiu3s" path="res://Scenes/player.tscn" id="3_kry3j"]
+[ext_resource type="AudioStream" uid="uid://dinv0egt1b5iq" path="res://Assets/Audio/Ouchi ni Kaeritai.mp3" id="4_jjvhh"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jjvhh")
 
 [node name="BG" parent="." instance=ExtResource("1_8gbba")]
 
-[node name="Land" parent="." instance=ExtResource("2_jjvhh")]
-
 [node name="Player" parent="." instance=ExtResource("3_kry3j")]
-position = Vector2(66, 465)
+position = Vector2(66, 499)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jjvhh")

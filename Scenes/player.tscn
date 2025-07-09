@@ -62,7 +62,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bi64h"]
-size = Vector2(150.688, 404)
+size = Vector2(150.688, 382.645)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, 0)
@@ -71,15 +71,16 @@ script = ExtResource("1_pu2lt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.90735e-06, 0)
+position = Vector2(3.22581, 25.8064)
 sprite_frames = SubResource("SpriteFrames_wpjfl")
 animation = &"Float"
 autoplay = "Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(70.9677, 16.129)
+position = Vector2(70.9677, 26.8064)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bi64h")
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-3.22581, -12.9032)
+position = Vector2(3.22581, 38.7097)
 stream = ExtResource("12_pu2lt")
